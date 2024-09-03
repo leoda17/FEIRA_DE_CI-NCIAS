@@ -1,1 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chatbot Interface</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="chat-container">
+        <div class="chat-header">
+            <h2>Suporte Técnico Chatbot</h2>
+        </div>
+        <div class="chat-box" id="chatBox">
+            <div class="chat-log" id="chatLog">
+                <!-- Conversas aparecerão aqui -->
+            </div>
+        </div>
+        <div class="chat-input">
+            <input type="text" id="userInput" placeholder="Digite sua mensagem..." autocomplete="off">
+            <button id="sendButton" onclick="sendMessage()">Enviar</button>
+        </div>
+    </div>
 
+    <script>
+        function sendMessage() {
+            let userInput = document.getElementById('userInput').value;
+            let chatLog = document.getElementById('chatLog');
+            
+            if (userInput.trim() !== "") {
+                let userMessage = `<div class="user-message"><span>Você:</span> ${userInput}</div>`;
+                chatLog.innerHTML += userMessage;
+
+                // Simulação de resposta do bot
+                let botMessage = `<div class="bot-message"><span>Bot:</span> Esta é uma resposta simulada.</div>`;
+                setTimeout(() => {
+                    chatLog.innerHTML += botMessage;
+                    chatLog.scrollTop = chatLog.scrollHeight;
+                }, 500);
+
+                document.getElementById('userInput').value = "";
+            }
+        }
+    </script>
+</body>
+</html>
